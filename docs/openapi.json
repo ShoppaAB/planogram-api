@@ -4,7 +4,30 @@
     "title": "Shoppa AB Planogram API",
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "https://productsvc.shoppa.com",
+      "description": "Production Planogram API"
+    }
+  ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": ["MediablobService"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/planograms": {
       "get": {
         "tags": ["PlanogramApiEndpoints"],
@@ -415,6 +438,18 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "ShoppaOpenID": {
+        "type": "openIdConnect",
+        "description": "Authenticate with Shoppa OpenID",
+        "openIdConnectUrl": "https://login.shoppa.com/.well-known/openid-configuration"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "ShoppaOpenID": []
+    }
+  ]
 }
