@@ -21,6 +21,14 @@
             SwaggerUIBundle.SwaggerUIStandalonePreset,
           ],
           layout: "BaseLayout",
+
+          oauth2RedirectUrl: window.location.origin + "/oauth2-redirect.html",
+          initOAuth: {
+            clientId: "swagger-ui",
+            usePkce: true,
+            appName: "Shoppa Planogram UI",
+            scopes: "material.read",
+          },
         });
       };
     </script>
