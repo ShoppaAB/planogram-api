@@ -3,37 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <title>Shoppa AB Planogram API</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swagger-ui-dist/swagger-ui.css"
-    />
+    <link rel="stylesheet" href="./swagger-ui/swagger-ui.css" />
   </head>
   <body>
     <div id="swagger-ui"></div>
-
-    <!-- core + standalone preset -->
-    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
-    <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
-
+    <script src="./swagger-ui/swagger-ui-bundle.js"></script>
+    <script src="./swagger-ui/swagger-ui-standalone-preset.js"></script>
     <script>
       window.onload = () => {
-        // 1) Spin up the Swagger UI
         const ui = SwaggerUIBundle({
           url: "openapi.json",
           dom_id: "#swagger-ui",
           presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
           layout: "BaseLayout",
-          // this must match your oauth2-redirect.html location
-          oauth2RedirectUrl: window.location.origin + "/oauth2-redirect.html",
+          oauth2RedirectUrl: "./swagger-ui/oauth2-redirect.html",
         });
 
-        // 2) THEN initialize auth with PKCE + OIDC
         ui.initOAuth({
-          clientId: "planogram-swagger-ui", // <— matches your IdP ClientId
+          clientId: "planogram-swagger-ui",
           appName: "Shoppa Planogram UI",
-          scopes: "openid material.read", // <— include 'openid'
+          scopes: "openid material.read",
           scopeSeparator: " ",
-          usePkceWithAuthorizationCodeGrant: true, // <— correct PKCE flag :contentReference[oaicite:0]{index=0}
+          usePkceWithAuthorizationCodeGrant: true,
         });
       };
     </script>
