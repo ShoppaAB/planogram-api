@@ -1,21 +1,21 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "Shoppa AB Planogram API",
+    "title": "Planogram API",
     "version": "v1"
   },
   "servers": [
     {
-      "url": "https://productsvc.test2.shoppa.com",
-      "description": "Integration test API"
+      "url": "https://product.svcs.test2.shoppa.com",
+      "description": "Integration"
     },
     {
-      "url": "https://productsvc.shoppa.com",
-      "description": "Production API"
+      "url": "https://product.svcs.shoppa.com",
+      "description": "Production"
     },
     {
-      "url": "https://productsvc.dev.shoppa.com",
-      "description": "Shoppa Development API"
+      "url": "https://smc.dev.shoppa.com:6938",
+      "description": "Development (internal only)"
     }
   ],
   "paths": {
@@ -431,9 +431,9 @@
       }
     },
     "securitySchemes": {
-      "Integration testOpenID": {
+      "IntegrationOpenID": {
         "type": "openIdConnect",
-        "description": "Integration test OpenID Connect",
+        "description": "Integration OpenID Connect",
         "openIdConnectUrl": "https://login.test2.shoppa.com/.well-known/openid-configuration"
       },
       "ProductionOpenID": {
@@ -441,22 +441,22 @@
         "description": "Production OpenID Connect",
         "openIdConnectUrl": "https://login.shoppa.com/.well-known/openid-configuration"
       },
-      "Shoppa DevelopmentOpenID": {
+      "Development (internal only)OpenID": {
         "type": "openIdConnect",
-        "description": "Shoppa Development OpenID Connect",
+        "description": "Development (internal only) OpenID Connect",
         "openIdConnectUrl": "https://login.dev.shoppa.com/.well-known/openid-configuration"
       }
     }
   },
   "security": [
     {
-      "Integration testOpenID": []
+      "IntegrationOpenID": []
     },
     {
       "ProductionOpenID": []
     },
     {
-      "Shoppa DevelopmentOpenID": []
+      "Development (internal only)OpenID": []
     }
   ]
 }
